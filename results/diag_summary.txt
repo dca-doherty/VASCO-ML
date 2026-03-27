@@ -1,0 +1,26 @@
+======================================================================
+CLASSIFIER DIAGNOSTICS SUMMARY  [red_allcandidates]
+======================================================================
+
+1. CALIBRATION (5-fold OOF)
+   Brier score (OOF)  : 0.1304
+   Class prevalence   : 0.3588
+
+2. LEARNING CURVE (Random Forest, 5-fold CV)
+   Final train AUC    : 0.9736
+   Final val AUC      : 0.8574
+   Train-val gap      : +0.1163
+
+3. BOOTSTRAP STABILITY (n=1000 OOB iterations)
+   OOB AUC  mean      : 0.8476
+   OOB AUC  std       : 0.0278
+   OOB AUC  95% CI    : [0.7921, 0.8976]
+   OOB Brier mean     : 0.1423
+   OOB Brier std      : 0.0161
+   OOB Brier 95% CI   : [0.1124, 0.1746]
+   Train-OOB gap mean : +0.1521
+   Train-OOB gap std  : 0.0278
+   Train-OOB gap 95%CI: [+0.1018, +0.2074]
+   Iterations used    : 1000
+
+======================================================================

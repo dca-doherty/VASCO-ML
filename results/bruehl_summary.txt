@@ -1,0 +1,47 @@
+========================================================================
+BRUEHL RUN SUMMARY -- ML Pipeline Diagnostic Metrics
+Generated: 2026-02-28 15:24
+========================================================================
+
+Run: ml_pipeline_red_allcandidates
+Dir: results\ml_pipeline_red_allcandidates
+
+------------------------------------------------------------------------
+CLASSIFIER PERFORMANCE (5-Fold CV)
+------------------------------------------------------------------------
+  AUC:          0.8606
+  Brier Score:  0.1307
+  Labels:       393 (141 pos, 252 neg)
+  Features:     23
+  Threshold:    0.314
+
+  Confusion Matrix:
+                    Pred Artifact   Pred Real
+    Actual Artifact       210 (TN)      42 (FP)
+    Actual Real            36 (FN)     105 (TP)
+
+  Sensitivity:  74.5%  (TP / (TP+FN) = 105/141)
+  Specificity:  83.3%  (TN / (TN+FP) = 210/252)
+  PPV:          71.4%  (TP / (TP+FP) = 105/147)
+  NPV:          85.4%  (TN / (TN+FN) = 210/246)
+  Accuracy:     80.2%
+  F1:           0.729
+
+------------------------------------------------------------------------
+NUCLEAR VALIDATION (External to Model)
+------------------------------------------------------------------------
+  Monotonicity:     17/17 steps increasing
+  IRR Range:        13.61 (min=1.22, max=14.84)
+  IRR at t=0.50:    1.54
+  IRR at t=0.75:    2.22
+  IRR at t=0.80:    2.95
+  IRR at t=0.85:    6.03
+  IRR at t=0.90:    10.31
+  D-1 Weighted p:     0.0064
+  D-1 Weighted coef:  106.9
+  D-1 Full OR:        1.991
+  Weighted IRR p:     0.0700
+
+  Scored catalog: 107,875 candidates
+  Mean prob:  0.395
+  Median prob: 0.352
