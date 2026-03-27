@@ -1,0 +1,271 @@
+(venv) (base) PS C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo> python scripts/pipeline2/pipeline_red_allcandidates/pipeline_run_all.py `
+>>   --config scripts/pipeline2/pipeline_red_allcandidates/config_red_allcandidates.yaml
+2026-02-28 12:19:52,445 [INFO] ======================================================================
+2026-02-28 12:19:52,445 [INFO] VASCO ML PIPELINE (RED ALL-CANDIDATES) -- MASTER RUNNER
+2026-02-28 12:19:52,445 [INFO] Date: 2026-02-28 12:19:52
+2026-02-28 12:19:52,446 [INFO] Config: scripts/pipeline2/pipeline_red_allcandidates/config_red_allcandidates.yaml
+2026-02-28 12:19:52,446 [INFO] Output: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates
+2026-02-28 12:19:52,446 [INFO] ======================================================================
+2026-02-28 12:19:52,446 [INFO] Stages: extract -> train -> score -> validate
+2026-02-28 12:19:52,446 [INFO] 
+======================================================================
+2026-02-28 12:19:52,447 [INFO] STAGE 1: FEATURE EXTRACTION (RED ALL-CANDIDATES)
+2026-02-28 12:19:52,447 [INFO] ======================================================================
+2026-02-28 12:19:54,393 [INFO] ============================================================
+2026-02-28 12:19:54,394 [INFO] FEATURE EXTRACTION PIPELINE (RED ALL-CANDIDATES)
+2026-02-28 12:19:54,394 [INFO] All 107,875 candidates -- no BOTH_BANDS filter
+2026-02-28 12:19:54,394 [INFO] ============================================================
+2026-02-28 12:19:54,631 [INFO] Loaded VASCO v4: 107,875 candidates
+2026-02-28 12:19:54,632 [INFO] BOTH_BANDS filter: DISABLED -- retaining all 107,875 candidates
+2026-02-28 12:19:55,496 [INFO] Computing positional features...
+2026-02-28 12:19:55,595 [INFO] Computing plate-level features...
+2026-02-28 12:19:55,638 [INFO] Classification distribution (unchanged from catalog):
+2026-02-28 12:19:55,642 [INFO]   EXCELLENT: 14
+2026-02-28 12:19:55,647 [INFO]   GOOD: 42
+2026-02-28 12:19:55,651 [INFO]   MARGINAL: 0
+2026-02-28 12:19:55,656 [INFO]   UNCERTAIN: 107,662
+2026-02-28 12:19:55,661 [INFO]   POOR: 157
+2026-02-28 12:19:58,333 [INFO] FITS cutout directory found: 215750 files
+2026-02-28 12:19:58,880 [INFO] Red FITS file index: 107875 unique positions
+Red FITS extraction: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 216/216 [1:52:15<00:00, 31.18s/it]
+2026-02-28 14:12:14,149 [INFO] Red FITS KD-tree matched: 107875 candidates
+2026-02-28 14:12:14,614 [INFO] Red FITS features extracted for 107,849 candidates
+2026-02-28 14:12:14,614 [INFO] Median-imputed (no FITS): 26 candidates
+2026-02-28 14:12:14,615 [INFO] Saving feature cache to C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates/feature_cache.parquet
+2026-02-28 14:12:15,125 [INFO] Feature cache: 107,875 rows, 43 columns
+2026-02-28 14:12:15,125 [INFO] Feature extraction complete
+2026-02-28 14:12:15,203 [INFO] Extraction completed in 6742.8s
+2026-02-28 14:12:15,203 [INFO] 
+======================================================================
+2026-02-28 14:12:15,204 [INFO] STAGE 2: MODEL TRAINING (RED ALL-CANDIDATES)
+2026-02-28 14:12:15,204 [INFO] ======================================================================
+2026-02-28 14:12:16,496 [INFO] ============================================================
+2026-02-28 14:12:16,497 [INFO] MODEL TRAINING PIPELINE (RED ALL-CANDIDATES)
+2026-02-28 14:12:16,497 [INFO] Date: 2026-02-28 14:12:16
+2026-02-28 14:12:16,497 [INFO] ============================================================
+2026-02-28 14:12:17,001 [INFO] Feature cache: 107,875 rows, 43 columns
+2026-02-28 14:12:17,957 [INFO] Red FITS features merged into training labels: 338/393 (13 columns)
+2026-02-28 14:12:17,958 [INFO] Computing plate-level features...
+2026-02-28 14:12:18,162 [INFO] Encoded feature matrix: 393 samples x 36 features
+2026-02-28 14:12:18,738 [INFO] 
+  Prevalence filter (min=1%): dropped 13 features:
+2026-02-28 14:12:18,739 [INFO]     - in_red_only
+2026-02-28 14:12:18,739 [INFO]     - in_blue_only
+2026-02-28 14:12:18,739 [INFO]     - plate_quality_POOR
+2026-02-28 14:12:18,739 [INFO]     - plate_quality_NO_PLATE
+2026-02-28 14:12:18,740 [INFO]     - diff_CONFIRMED_TRANSIENT
+2026-02-28 14:12:18,740 [INFO]     - diff_SIGNIFICANT_DIFF
+2026-02-28 14:12:18,740 [INFO]     - diff_NO_DIFF
+2026-02-28 14:12:18,740 [INFO]     - diff_OUT_OF_BOUNDS
+2026-02-28 14:12:18,741 [INFO]     - diff_NOT_CHECKED
+2026-02-28 14:12:18,741 [INFO]     - psf_EXCELLENT
+2026-02-28 14:12:18,741 [INFO]     - psf_GOOD
+2026-02-28 14:12:18,741 [INFO]     - psf_NORMAL
+2026-02-28 14:12:18,741 [INFO]     - psf_UNKNOWN
+2026-02-28 14:12:18,742 [INFO] Final feature matrix: 393 samples x 23 features
+2026-02-28 14:12:18,742 [INFO] Features: ['snr', 'psf_ratio', 'elongation', 'compactness', 'sharpness', 'n_comparison_stars', 'candidate_score', 'plate_quality_GOOD', 'plate_quality_MODERATE', 'plate_low_snr_frac', 'plate_snr_std', 'plate_elongation_mean', 'plate_n_high_snr', 'red_fits_snr', 'red_fits_fwhm', 'red_ellipticity', 'red_sharpness_2nd', 'red_n_connected_px', 'red_aperture_flux', 'red_dist_to_edge_px', 'red_symmetry_score', 'red_gradient_magnitude', 'red_near_bright_star']
+2026-02-28 14:12:18,745 [INFO] Training matrix: 393 samples x 23 features
+2026-02-28 14:12:18,745 [INFO]
+Cross-validation (stratified, 5 folds)...
+2026-02-28 14:12:25,744 [INFO] 
+  Per-fold metrics:
+2026-02-28 14:12:25,745 [INFO]     Fold 0: AUC=0.818 Sens=0.552 Spec=0.980 F1=0.696
+2026-02-28 14:12:25,745 [INFO]     Fold 1: AUC=0.870 Sens=0.679 Spec=0.961 F1=0.776
+2026-02-28 14:12:25,746 [INFO]     Fold 2: AUC=0.878 Sens=0.714 Spec=0.882 F1=0.741
+2026-02-28 14:12:25,746 [INFO]     Fold 3: AUC=0.881 Sens=0.643 Spec=0.840 F1=0.667
+2026-02-28 14:12:25,746 [INFO]     Fold 4: AUC=0.857 Sens=0.607 Spec=0.920 F1=0.694
+2026-02-28 14:12:25,747 [INFO]
+  Mean: AUC=0.861 +/- 0.026
+2026-02-28 14:12:25,747 [INFO]         Sens=0.639 Spec=0.917 F1=0.714
+2026-02-28 14:12:25,748 [INFO]   Brier score: 0.1307
+2026-02-28 14:12:25,748 [INFO]
+  Feature importance (top 10):
+2026-02-28 14:12:25,749 [INFO]     plate_low_snr_frac            : 0.1037
+2026-02-28 14:12:25,749 [INFO]     plate_quality_GOOD            : 0.0730
+2026-02-28 14:12:25,749 [INFO]     plate_elongation_mean         : 0.0650
+2026-02-28 14:12:25,749 [INFO]     red_gradient_magnitude        : 0.0619
+2026-02-28 14:12:25,749 [INFO]     plate_quality_MODERATE        : 0.0598
+2026-02-28 14:12:25,749 [INFO]     red_sharpness_2nd             : 0.0568
+2026-02-28 14:12:25,749 [INFO]     red_aperture_flux             : 0.0550
+2026-02-28 14:12:25,750 [INFO]     red_symmetry_score            : 0.0525
+2026-02-28 14:12:25,750 [INFO]     red_ellipticity               : 0.0517
+2026-02-28 14:12:25,750 [INFO]     red_fits_fwhm                 : 0.0514
+2026-02-28 14:12:25,755 [INFO] 
+Training final model on all 393 samples...
+2026-02-28 14:12:27,329 [INFO] Model saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\model_final.joblib
+2026-02-28 14:12:27,330 [INFO] 
+Calibrating probabilities...
+2026-02-28 14:12:27,336 [INFO] Calibrator saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\calibrator.joblib
+2026-02-28 14:12:27,337 [INFO]
+Computing SHAP values...
+2026-02-28 14:12:30,217 [INFO] 
+Generating diagnostic charts...
+2026-02-28 14:12:31,864 [INFO] Charts saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\chart_training_diagnostics.png
+2026-02-28 14:12:31,870 [INFO] 
+Training complete
+2026-02-28 14:12:31,870 [INFO] Training completed in 16.7s
+2026-02-28 14:12:31,870 [INFO]   AUC: 0.861
+2026-02-28 14:12:31,871 [INFO]
+======================================================================
+2026-02-28 14:12:31,871 [INFO] STAGE 3: SCORING (RED ALL-CANDIDATES)
+2026-02-28 14:12:31,871 [INFO] ======================================================================
+2026-02-28 14:12:31,876 [INFO] ============================================================
+2026-02-28 14:12:31,876 [INFO] SCORING PIPELINE (RED ALL-CANDIDATES)
+2026-02-28 14:12:31,877 [INFO] Date: 2026-02-28 14:12:31
+2026-02-28 14:12:31,877 [INFO] ============================================================
+2026-02-28 14:12:31,969 [INFO] Feature cache: 107,875 rows, 43 columns
+2026-02-28 14:12:32,049 [INFO] Model loaded: 23 features
+2026-02-28 14:12:32,050 [INFO]   Dropped by prevalence/selection filter: ['in_red_only', 'in_blue_only', 'plate_quality_POOR', 'plate_quality_NO_PLATE', 'diff_CONFIRMED_TRANSIENT', 'diff_SIGNIFICANT_DIFF', 'diff_NO_DIFF', 'diff_OUT_OF_BOUNDS', 'diff_NOT_CHECKED', 'psf_EXCELLENT', 'psf_GOOD', 'psf_NORMAL', 'psf_UNKNOWN']
+2026-02-28 14:12:32,065 [INFO] Calibrator loaded
+2026-02-28 14:12:32,065 [INFO] Computing plate-level features...
+2026-02-28 14:12:32,176 [INFO] Encoding features...
+2026-02-28 14:12:32,450 [INFO] Feature matrix: 107,875 x 23
+2026-02-28 14:12:32,450 [INFO] Scoring all candidates...
+2026-02-28 14:12:33,392 [INFO]   Imputation shrinkage (alpha=0.70): 26 candidates, mean 0.5152 -> 0.4005 (actual median: 0.3514)
+2026-02-28 14:12:33,393 [INFO] Applying calibration...
+2026-02-28 14:12:33,418 [INFO]   Raw unique values: 9,132, Calibrated: 3,483 (resolution ratio: 38.14%, top-3 coverage: 59.3%)
+2026-02-28 14:12:33,419 [WARNING] Calibration collapsed distribution: top 3 values cover 59.3%. Using raw probabilities to preserve discrimination.
+2026-02-28 14:12:33,421 [INFO] Using raw ensemble probabilities as primary scores.
+2026-02-28 14:12:33,445 [INFO] Threshold: 0.314
+2026-02-28 14:12:33,445 [INFO]
+  Probability by classification:
+2026-02-28 14:12:33,465 [INFO]     EXCELLENT      : n=     14  mean=0.4375  median=0.1748
+2026-02-28 14:12:33,471 [INFO]     GOOD           : n=     42  mean=0.3933  median=0.3236
+2026-02-28 14:12:33,480 [INFO]     POOR           : n=    157  mean=0.1169  median=0.0688
+2026-02-28 14:12:33,490 [INFO]     UNCERTAIN      : n=107,662  mean=0.3951  median=0.3520
+2026-02-28 14:12:33,491 [INFO]
+  Probability by imputation source:
+2026-02-28 14:12:33,499 [INFO]     actual         : n=107,849  mean=0.3947  median=0.3514
+2026-02-28 14:12:33,504 [INFO]     median_imputed : n=     26  mean=0.4005  median=0.4260
+2026-02-28 14:12:33,508 [INFO]
+  Bimodality coefficient: 0.5955 (bimodal)
+2026-02-28 14:12:33,509 [INFO]
+Computing per-candidate SHAP top-3 features...
+2026-02-28 14:15:24,548 [INFO] Generating scoring charts...
+2026-02-28 14:15:25,268 [INFO] Chart saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\chart_scoring.png
+2026-02-28 14:15:28,400 [INFO] Scored catalog saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\scored_catalog.csv (44 columns)
+2026-02-28 14:15:28,727 [INFO] 
+  Summary:
+2026-02-28 14:15:28,727 [INFO]     Above threshold (predicted real): 59,066 (54.8%)
+2026-02-28 14:15:28,728 [INFO]     Below threshold (predicted artifact): 48,809 (45.2%)
+2026-02-28 14:15:28,728 [INFO]     Mean probability: 0.3947
+2026-02-28 14:15:28,730 [INFO]     Median probability: 0.3515
+2026-02-28 14:15:28,730 [INFO]
+Scoring complete
+2026-02-28 14:15:28,743 [INFO] Scoring completed in 176.9s
+2026-02-28 14:15:28,743 [INFO]
+======================================================================
+2026-02-28 14:15:28,744 [INFO] STAGE 4: NUCLEAR VALIDATION (RED ALL-CANDIDATES)
+2026-02-28 14:15:28,744 [INFO] ======================================================================
+2026-02-28 14:15:28,750 [INFO] ============================================================
+2026-02-28 14:15:28,750 [INFO] NUCLEAR VALIDATION PIPELINE (RED ALL-CANDIDATES)
+2026-02-28 14:15:28,751 [INFO] Date: 2026-02-28 14:15:28
+2026-02-28 14:15:28,751 [INFO] ============================================================
+2026-02-28 14:15:28,967 [INFO] Scored catalog: 107,875 candidates
+2026-02-28 14:15:28,972 [INFO] Probability: mean=0.3947, median=0.3515, std=0.2358
+2026-02-28 14:15:29,023 [INFO] Nuclear timeline: 370 dates
+2026-02-28 14:15:29,026 [INFO] Training report: AUC=0.8605984738723075
+2026-02-28 14:15:29,027 [INFO]
+Loading baselines:
+2026-02-28 14:15:29,064 [INFO]   Loaded baseline: proxy_sweep (20 rows)
+2026-02-28 14:15:29,079 [INFO]   Loaded baseline: reclass_v1_sweep (20 rows)
+2026-02-28 14:15:29,090 [INFO]   Loaded baseline: s5_sweep (20 rows)
+2026-02-28 14:15:29,090 [INFO]
+============================================================
+2026-02-28 14:15:29,091 [INFO] 1. THRESHOLD SWEEP
+2026-02-28 14:15:29,091 [INFO] ============================================================
+2026-02-28 14:15:29,091 [INFO]
+Threshold sweep: 20 thresholds from 0.0 to 0.95
+2026-02-28 14:15:29,106 [INFO]   t=0.000: N=107,875  IRR=   nan  (nan-nan)  Fisher=nan
+2026-02-28 14:15:29,128 [INFO]   t=0.050: N=107,329  IRR=   nan  (nan-nan)  Fisher=nan
+2026-02-28 14:15:29,188 [INFO]   t=0.100: N=100,550  IRR= 1.224  (0.92-1.62)  Fisher=1.781
+2026-02-28 14:15:29,226 [INFO]   t=0.150: N= 88,772  IRR= 1.248  (0.94-1.66)  Fisher=1.838
+2026-02-28 14:15:29,261 [INFO]   t=0.200: N= 78,034  IRR= 1.283  (0.97-1.70)  Fisher=1.957
+2026-02-28 14:15:29,295 [INFO]   t=0.250: N= 68,904  IRR= 1.316  (0.99-1.75)  Fisher=1.987
+2026-02-28 14:15:29,327 [INFO]   t=0.300: N= 61,096  IRR= 1.358* (1.02-1.80)  Fisher=1.634
+2026-02-28 14:15:29,357 [INFO]   t=0.350: N= 54,125  IRR= 1.392* (1.05-1.85)  Fisher=1.566
+2026-02-28 14:15:29,386 [INFO]   t=0.400: N= 47,539  IRR= 1.446* (1.09-1.92)  Fisher=1.442
+2026-02-28 14:15:29,415 [INFO]   t=0.450: N= 41,628  IRR= 1.497* (1.13-1.99)  Fisher=1.506
+2026-02-28 14:15:29,442 [INFO]   t=0.500: N= 36,215  IRR= 1.544* (1.16-2.05)  Fisher=1.550
+2026-02-28 14:15:29,467 [INFO]   t=0.550: N= 30,955  IRR= 1.598* (1.20-2.12)  Fisher=1.275
+2026-02-28 14:15:29,491 [INFO]   t=0.600: N= 25,819  IRR= 1.672* (1.26-2.22)  Fisher=1.276
+2026-02-28 14:15:29,514 [INFO]   t=0.650: N= 20,785  IRR= 1.780* (1.34-2.37)  Fisher=1.384
+2026-02-28 14:15:29,536 [INFO]   t=0.700: N= 15,481  IRR= 1.951* (1.47-2.60)  Fisher=1.304
+2026-02-28 14:15:29,557 [INFO]   t=0.750: N= 10,761  IRR= 2.225* (1.67-2.96)  Fisher=1.378
+2026-02-28 14:15:29,578 [INFO]   t=0.800: N=  6,280  IRR= 2.951* (2.21-3.94)  Fisher=1.524
+2026-02-28 14:15:29,596 [INFO]   t=0.850: N=  2,564  IRR= 6.030* (4.49-8.10)  Fisher=2.165
+2026-02-28 14:15:29,615 [INFO]   t=0.900: N=    754  IRR=10.313* (7.36-14.44)  Fisher=2.219
+2026-02-28 14:15:29,694 [INFO]   t=0.950: N=     64  IRR=14.837* (7.29-30.18)  Fisher=5.571
+2026-02-28 14:15:29,696 [INFO] 
+  Monotonicity: 17/17 steps increasing (100%)
+2026-02-28 14:15:29,697 [INFO]
+============================================================
+2026-02-28 14:15:29,697 [INFO] 2. QUINTILE ANALYSIS
+2026-02-28 14:15:29,698 [INFO] ============================================================
+2026-02-28 14:15:29,698 [INFO]
+Quintile analysis:
+2026-02-28 14:15:29,756 [INFO]   Q1 (lowest): n= 21,575  prob=[0.006,0.161]  IRR=1.146  (0.86-1.52)
+2026-02-28 14:15:29,774 [INFO]   Q2: n= 21,575  prob=[0.161,0.276]  IRR=1.020  (0.77-1.36)
+2026-02-28 14:15:29,793 [INFO]   Q3: n= 21,575  prob=[0.276,0.437]  IRR=1.085  (0.82-1.44)
+2026-02-28 14:15:29,812 [INFO]   Q4: n= 21,575  prob=[0.437,0.642]  IRR=1.252  (0.94-1.67)
+2026-02-28 14:15:29,831 [INFO]   Q5 (highest): n= 21,575  prob=[0.642,0.977]  IRR=1.748* (1.31-2.32)
+2026-02-28 14:15:29,840 [INFO] 
+============================================================
+2026-02-28 14:15:29,840 [INFO] 3. D-1 ANTICIPATORY SIGNAL
+2026-02-28 14:15:29,840 [INFO] ============================================================
+2026-02-28 14:15:29,841 [INFO]
+D-1 anticipatory signal analysis:
+2026-02-28 14:15:29,852 [INFO]   Full catalog: D-1 Fisher OR=1.991 (p=0.4275)
+2026-02-28 14:15:29,867 [INFO]   Weighted D-1: coef=106.9159 (p=0.0064)
+2026-02-28 14:15:29,954 [INFO]   High-prob (>=0.5) D-1: Fisher OR=2.809 (p=0.1375)
+2026-02-28 14:15:29,967 [INFO] 
+============================================================
+2026-02-28 14:15:29,968 [INFO] 4. SPECTRAL CLASS BREAKDOWN -- SKIPPED (red all-candidates pipeline)
+2026-02-28 14:15:29,969 [INFO] ============================================================
+2026-02-28 14:15:29,970 [INFO]
+============================================================
+2026-02-28 14:15:29,971 [INFO] 5. PROBABILITY-WEIGHTED REGRESSION
+2026-02-28 14:15:29,972 [INFO] ============================================================
+2026-02-28 14:15:29,973 [INFO]
+Probability-weighted regression:
+2026-02-28 14:15:30,036 [INFO]   Unweighted: IRR=1.228 (p=0.1551)
+2026-02-28 14:15:30,045 [INFO]   Weighted (Gaussian): coef=44.6316 (p=0.0700)
+2026-02-28 14:15:30,045 [INFO]
+============================================================
+2026-02-28 14:15:30,045 [INFO] 6. THREE-WAY COMPARISON
+2026-02-28 14:15:30,046 [INFO] ============================================================
+2026-02-28 14:15:30,046 [INFO]
+Three-way comparison table:
+2026-02-28 14:15:30,080 [INFO] 
+  Metric                            S5 Baseline     Reclass v1    Red-AllCand
+2026-02-28 14:15:30,081 [INFO]   --------------------------------------------------------------------------
+2026-02-28 14:15:30,082 [INFO]   AUC                                     0.874          0.889          0.861
+2026-02-28 14:15:30,083 [INFO]   IRR at t=0.50                           1.947          2.706          1.544
+2026-02-28 14:15:30,084 [INFO]   IRR at t=0.75                           7.672          2.539          2.225
+2026-02-28 14:15:30,085 [INFO]   Monotonicity %                             65             28            100
+2026-02-28 14:15:30,086 [INFO]   N UNCERTAIN                           107,662         40,365        107,662
+2026-02-28 14:15:30,087 [INFO]   N scored (catalog size)               107,875        107,875        107,875
+2026-02-28 14:15:30,088 [INFO]   Mean prob                               0.194          0.178          0.395
+2026-02-28 14:15:30,089 [INFO]   Prob std                                0.104          0.178          0.236
+2026-02-28 14:15:30,097 [INFO] 
+============================================================
+2026-02-28 14:15:30,098 [INFO] 7. GENERATING CHARTS
+2026-02-28 14:15:30,099 [INFO] ============================================================
+2026-02-28 14:15:30,955 [INFO] Chart saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\chart_nuclear_validation.png
+2026-02-28 14:15:30,984 [INFO] 
+Validation summary saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\validation_summary.txt
+2026-02-28 14:15:30,985 [INFO] 
+Validation complete
+2026-02-28 14:15:30,989 [INFO] Validation completed in 2.2s
+2026-02-28 14:15:30,990 [INFO]
+======================================================================
+2026-02-28 14:15:30,990 [INFO] PIPELINE SUMMARY (RED ALL-CANDIDATES)
+2026-02-28 14:15:30,990 [INFO] ======================================================================
+2026-02-28 14:15:30,990 [INFO]   [OK] extract        : OK
+2026-02-28 14:15:30,991 [INFO]   [OK] train          : OK (AUC=0.861)
+2026-02-28 14:15:30,991 [INFO]   [OK] score          : OK
+2026-02-28 14:15:30,991 [INFO]   [OK] validate       : OK (mono=100.0%)
+2026-02-28 14:15:30,991 [INFO]
+  Total time: 6938.5s
+2026-02-28 14:15:30,991 [INFO]
+  All stages completed successfully

@@ -1,0 +1,52 @@
+(venv) (base) PS C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo> python bruehl_run_summary.py --run-dir results/ml_pipeline_red_allcandidates
+Reading: results/ml_pipeline_red_allcandidates
+
+========================================================================
+BRUEHL RUN SUMMARY -- ML Pipeline Diagnostic Metrics
+Generated: 2026-02-28 14:36
+========================================================================
+
+Run: ml_pipeline_red_allcandidates
+Dir: results\ml_pipeline_red_allcandidates
+
+------------------------------------------------------------------------
+CLASSIFIER PERFORMANCE (5-Fold CV)
+------------------------------------------------------------------------
+  AUC:          0.8606
+  Brier Score:  0.1307
+  Labels:       393 (141 pos, 252 neg)
+  Features:     23
+  Threshold:    0.314
+
+  Confusion Matrix:
+                    Pred Artifact   Pred Real
+    Actual Artifact       231 (TN)      21 (FP)
+    Actual Real            51 (FN)      90 (TP)
+
+  Sensitivity:  63.9%  (TP / (TP+FN) = 90/141)
+  Specificity:  91.7%  (TN / (TN+FP) = 231/252)
+  PPV:          81.1%  (TP / (TP+FP) = 90/111)
+  NPV:          81.9%  (TN / (TN+FN) = 231/282)
+  Accuracy:     81.7%
+  F1:           0.714
+
+------------------------------------------------------------------------
+NUCLEAR VALIDATION (External to Model)
+------------------------------------------------------------------------
+  Monotonicity:     17/17 steps increasing
+  IRR Range:        13.61 (min=1.22, max=14.84)
+  IRR at t=0.50:    1.54
+  IRR at t=0.75:    2.22
+  IRR at t=0.80:    2.95
+  IRR at t=0.85:    6.03
+  IRR at t=0.90:    10.31
+  D-1 Weighted p:     0.0064
+  D-1 Weighted coef:  106.9
+  D-1 Full OR:        1.991
+  Weighted IRR p:     0.0700
+
+  Scored catalog: 107,875 candidates
+  Mean prob:  0.395
+  Median prob: 0.352
+
+Saved to: results/ml_pipeline_red_allcandidates\bruehl_summary.txt

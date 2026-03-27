@@ -1,0 +1,42 @@
+MONOTONICITY PERMUTATION TEST -- OBSERVATION-DAY RESTRICTED
+=================================================================
+
+Timeline: 556 observation days (75 nuclear, 481 non-nuclear)
+Permutations: 100,000
+
+OBSERVED THRESHOLD SWEEP
+----------------------------------------
+  t=0.100: IRR=1.512
+  t=0.150: IRR=1.540
+  t=0.200: IRR=1.577
+  t=0.250: IRR=1.607
+  t=0.300: IRR=1.647
+  t=0.350: IRR=1.683
+  t=0.400: IRR=1.735
+  t=0.450: IRR=1.783
+  t=0.500: IRR=1.830
+  t=0.550: IRR=1.879
+  t=0.600: IRR=1.943
+  t=0.650: IRR=2.046
+  t=0.700: IRR=2.207
+  t=0.750: IRR=2.489
+  t=0.800: IRR=3.126
+  t=0.850: IRR=5.224
+  t=0.900: IRR=7.978
+  t=0.950: IRR=19.240
+
+Monotonicity: 17/17 steps increasing
+Spearman rho: 1.0000
+IRR range: 17.7281
+
+PERMUTATION RESULTS
+----------------------------------------
+Increasing steps: p = 0.054149
+  Null mean: 7.1 +/- 6.3
+  Null max: 17
+
+Spearman rho: p = 0.066239
+  Null mean: -0.1498 +/- 0.8554
+
+IRR range: p = 0.116159
+  Null mean: 3.2829 +/- 5.8165
