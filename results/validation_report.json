@@ -1,0 +1,26 @@
+{
+  "date": "2026-03-24T20:48:37.133420",
+  "pipeline_variant": "red_allcandidates",
+  "n_candidates": 107875,
+  "mean_prob": 0.39474821464786786,
+  "bimodality_coefficient": 0.5954873228192342,
+  "monotonicity_pct": 100.0,
+  "d1_results": {
+    "d1_full_or": 1.990990990990991,
+    "d1_full_pval": 0.4275014860565182,
+    "d1_weighted_coef": 106.915870477634,
+    "d1_weighted_pval": 0.006444472127227363,
+    "d1_highprob_or": 2.809116809116809,
+    "d1_highprob_pval": 0.1375014674374786
+  },
+  "prob_weighted": {
+    "raw_irr": 1.2280474905886392,
+    "raw_pval": 0.15507268283668005,
+    "weighted_coef": 44.631594376194265,
+    "weighted_pval": 0.0700499741224263
+  },
+  "irr_at_0.5": 1.5442757340102635,
+  "n_retained_at_0.5": 36215,
+  "irr_at_0.75": 2.2245951361462337,
+  "n_retained_at_0.75": 10761
+}

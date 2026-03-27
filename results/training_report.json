@@ -1,0 +1,71 @@
+{
+  "date": "2026-03-24T20:45:10.931963",
+  "pipeline_variant": "red_allcandidates",
+  "n_samples": 393,
+  "n_positive": 141,
+  "n_negative": 252,
+  "n_features": 23,
+  "feature_names": [
+    "snr",
+    "psf_ratio",
+    "elongation",
+    "compactness",
+    "sharpness",
+    "n_comparison_stars",
+    "candidate_score",
+    "plate_quality_GOOD",
+    "plate_quality_MODERATE",
+    "plate_low_snr_frac",
+    "plate_snr_std",
+    "plate_elongation_mean",
+    "plate_n_high_snr",
+    "red_fits_snr",
+    "red_fits_fwhm",
+    "red_ellipticity",
+    "red_sharpness_2nd",
+    "red_n_connected_px",
+    "red_aperture_flux",
+    "red_dist_to_edge_px",
+    "red_symmetry_score",
+    "red_gradient_magnitude",
+    "red_near_bright_star"
+  ],
+  "dropped_features": [
+    "in_red_only",
+    "in_blue_only",
+    "plate_quality_POOR",
+    "plate_quality_NO_PLATE",
+    "diff_CONFIRMED_TRANSIENT",
+    "diff_SIGNIFICANT_DIFF",
+    "diff_NO_DIFF",
+    "diff_OUT_OF_BOUNDS",
+    "diff_NOT_CHECKED",
+    "psf_EXCELLENT",
+    "psf_GOOD",
+    "psf_NORMAL",
+    "psf_UNKNOWN"
+  ],
+  "n_dropped_prevalence": 13,
+  "n_dropped_selection": 0,
+  "cv_method": "stratified",
+  "n_folds": 5,
+  "mean_auc": 0.8605984738723075,
+  "std_auc": 0.025721028924499095,
+  "mean_sensitivity": 0.6389162561576355,
+  "mean_specificity": 0.9166274509803921,
+  "mean_f1": 0.7144894672844982,
+  "brier_score": 0.13071615467008654,
+  "optimal_threshold": 0.3138973382349069,
+  "calibration_method": "isotonic",
+  "tuned": false,
+  "confusion_matrix": [
+    [
+      210,
+      42
+    ],
+    [
+      36,
+      105
+    ]
+  ]
+}

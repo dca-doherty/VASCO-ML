@@ -1,0 +1,64 @@
+2026-03-24 20:44:55,154 [INFO] ============================================================
+2026-03-24 20:44:55,154 [INFO] MODEL TRAINING PIPELINE (RED ALL-CANDIDATES)
+2026-03-24 20:44:55,154 [INFO] Date: 2026-03-24 20:44:55
+2026-03-24 20:44:55,155 [INFO] ============================================================
+2026-03-24 20:44:55,797 [INFO] Feature cache: 107,875 rows, 43 columns
+2026-03-24 20:44:56,753 [INFO] Red FITS features merged into training labels: 338/393 (13 columns)
+2026-03-24 20:44:56,753 [INFO] Computing plate-level features...
+2026-03-24 20:44:56,836 [INFO] Encoded feature matrix: 393 samples x 36 features
+2026-03-24 20:44:57,143 [INFO] 
+  Prevalence filter (min=1%): dropped 13 features:
+2026-03-24 20:44:57,144 [INFO]     - in_red_only
+2026-03-24 20:44:57,144 [INFO]     - in_blue_only
+2026-03-24 20:44:57,144 [INFO]     - plate_quality_POOR
+2026-03-24 20:44:57,144 [INFO]     - plate_quality_NO_PLATE
+2026-03-24 20:44:57,144 [INFO]     - diff_CONFIRMED_TRANSIENT
+2026-03-24 20:44:57,145 [INFO]     - diff_SIGNIFICANT_DIFF
+2026-03-24 20:44:57,145 [INFO]     - diff_NO_DIFF
+2026-03-24 20:44:57,145 [INFO]     - diff_OUT_OF_BOUNDS
+2026-03-24 20:44:57,145 [INFO]     - diff_NOT_CHECKED
+2026-03-24 20:44:57,145 [INFO]     - psf_EXCELLENT
+2026-03-24 20:44:57,146 [INFO]     - psf_GOOD
+2026-03-24 20:44:57,146 [INFO]     - psf_NORMAL
+2026-03-24 20:44:57,146 [INFO]     - psf_UNKNOWN
+2026-03-24 20:44:57,146 [INFO] Final feature matrix: 393 samples x 23 features
+2026-03-24 20:44:57,146 [INFO] Features: ['snr', 'psf_ratio', 'elongation', 'compactness', 'sharpness', 'n_comparison_stars', 'candidate_score', 'plate_quality_GOOD', 'plate_quality_MODERATE', 'plate_low_snr_frac', 'plate_snr_std', 'plate_elongation_mean', 'plate_n_high_snr', 'red_fits_snr', 'red_fits_fwhm', 'red_ellipticity', 'red_sharpness_2nd', 'red_n_connected_px', 'red_aperture_flux', 'red_dist_to_edge_px', 'red_symmetry_score', 'red_gradient_magnitude', 'red_near_bright_star']
+2026-03-24 20:44:57,146 [INFO] Training matrix: 393 samples x 23 features
+2026-03-24 20:44:57,147 [INFO] 
+Cross-validation (stratified, 5 folds)...
+2026-03-24 20:45:04,351 [INFO] 
+  Per-fold metrics:
+2026-03-24 20:45:04,352 [INFO]     Fold 0: AUC=0.818 Sens=0.552 Spec=0.980 F1=0.696
+2026-03-24 20:45:04,353 [INFO]     Fold 1: AUC=0.870 Sens=0.679 Spec=0.961 F1=0.776
+2026-03-24 20:45:04,354 [INFO]     Fold 2: AUC=0.878 Sens=0.714 Spec=0.882 F1=0.741
+2026-03-24 20:45:04,354 [INFO]     Fold 3: AUC=0.881 Sens=0.643 Spec=0.840 F1=0.667
+2026-03-24 20:45:04,354 [INFO]     Fold 4: AUC=0.857 Sens=0.607 Spec=0.920 F1=0.694
+2026-03-24 20:45:04,355 [INFO] 
+  Mean: AUC=0.861 +/- 0.026
+2026-03-24 20:45:04,355 [INFO]         Sens=0.639 Spec=0.917 F1=0.714
+2026-03-24 20:45:04,357 [INFO]   Brier score: 0.1307
+2026-03-24 20:45:04,358 [INFO] 
+  Feature importance (top 10):
+2026-03-24 20:45:04,358 [INFO]     plate_low_snr_frac            : 0.1037
+2026-03-24 20:45:04,358 [INFO]     plate_quality_GOOD            : 0.0730
+2026-03-24 20:45:04,359 [INFO]     plate_elongation_mean         : 0.0650
+2026-03-24 20:45:04,360 [INFO]     red_gradient_magnitude        : 0.0619
+2026-03-24 20:45:04,361 [INFO]     plate_quality_MODERATE        : 0.0598
+2026-03-24 20:45:04,362 [INFO]     red_sharpness_2nd             : 0.0568
+2026-03-24 20:45:04,362 [INFO]     red_aperture_flux             : 0.0550
+2026-03-24 20:45:04,363 [INFO]     red_symmetry_score            : 0.0525
+2026-03-24 20:45:04,364 [INFO]     red_ellipticity               : 0.0517
+2026-03-24 20:45:04,365 [INFO]     red_fits_fwhm                 : 0.0514
+2026-03-24 20:45:04,380 [INFO] 
+Training final model on all 393 samples...
+2026-03-24 20:45:06,244 [INFO] Model saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\model_final.joblib
+2026-03-24 20:45:06,245 [INFO] 
+Calibrating probabilities...
+2026-03-24 20:45:06,260 [INFO] Calibrator saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\calibrator.joblib
+2026-03-24 20:45:06,261 [INFO] 
+Computing SHAP values...
+2026-03-24 20:45:09,544 [INFO] 
+Generating diagnostic charts...
+2026-03-24 20:45:10,931 [INFO] Charts saved: C:\Users\Brian Doherty\OneDrive\Documentos\python\patentInfo\results/ml_pipeline_red_allcandidates\chart_training_diagnostics.png
+2026-03-24 20:45:10,935 [INFO] 
+Training complete
