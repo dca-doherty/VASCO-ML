@@ -1,0 +1,4 @@
+analysis,p_value,n_perm,mean_nuke,mean_non,ratio,obs_diff,n_nuke_dates,n_non_dates,u_stat,z_stat,d9_pct_in_window,d0-d8_pooled_pct_in_window
+primary_permutation,0.024897510248975102,10000.0,174.16090882295535,94.55687023837032,1.8418641435985519,79.60403858458503,26.0,344.0,,,,
+mann_whitney_u,0.0023121929994011246,,,,,,,,5949.5,,,
+d9_vs_d0-d8_zprop,1.3859986592875048e-13,,,,,,,,,7.397665094858315,13.548128877326397,11.07639622410745

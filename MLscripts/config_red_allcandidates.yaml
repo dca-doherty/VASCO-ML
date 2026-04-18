@@ -1,0 +1,78 @@
+active_learning:
+  frac_boundary: 0.35
+  frac_high_confidence: 0.4
+  frac_nuclear_negative: 0.25
+crossmatch:
+  catalog_match_deg: 0.01
+  tolerance_arcsec: 2.0
+cv:
+  n_folds: 5
+  split_method: stratified
+extraction:
+  annulus_inner_px: 10
+  annulus_outer_px: 15
+  aperture_radius_px: 5
+  batch_size: 500
+  n_workers: 4
+  sigma_threshold: 3.0
+model:
+  calibration: isotonic
+  ensemble: mean_prob
+  feature_selection:
+    max_features: 48
+    method: mutual_info
+    min_ratio: 8.0
+  gbm:
+    learning_rate: 0.05
+    max_depth: 4
+    min_samples_leaf: 3
+    n_estimators: 300
+  lgbm:
+    learning_rate: 0.05
+    max_depth: 4
+    min_child_samples: 3
+    n_estimators: 300
+  proxy_shrinkage: 0.7
+  rf:
+    max_depth: 8
+    min_samples_leaf: 3
+    n_estimators: 300
+  xgb:
+    learning_rate: 0.05
+    max_depth: 4
+    min_child_weight: 3
+    n_estimators: 300
+observatory:
+  blue_emulsion: 103a-O
+  epoch_end: 1958
+  epoch_start: 1949
+  name: Palomar
+  plate_scale_arcsec_per_px: 1.7
+  red_emulsion: 103a-E
+  typical_exposure_min: 45
+paths:
+  baselines:
+    proxy_sweep: results/reclassification_proxy/threshold_sweep.csv
+    reclass_v1_sweep: results/reclassification/threshold_sweep.csv
+    s5_sweep: results/probability_weighted_analysis/threshold_sweep.csv
+  catalog: data/raw/SUPERVIKTIG_HELAVASCO_validated_v4.csv
+  feature_cache: results/ml_pipeline_red_allcandidates/feature_cache.parquet
+  fits_cutouts: D:/plate_data_3deg
+  labels:
+  - results/supervised_retraining_r1/training_data.csv
+  - TRANSIENT_NEW_For_Review_high_confidence_artifacts_100_plus_SB_Examples.xlsx
+  - data/labels/bruehl_r2_labels.csv
+  - data/labels/beatriz_r4_labels_conservative.csv
+  nuclear_timeline: data/raw/nuclear_tests/comprehensive_transient_nuclear_merged 2.csv
+  observation_dates: data/raw/nuclear_tests/poss_i_observing_dates_strict.csv
+  output: results/ml_pipeline_red_allcandidates
+  spectral: data/solar_reflection_results_v4_20260227.csv
+pipeline_variant: red_allcandidates
+seed: 42
+steve_labels:
+  n_positive: 7
+  seed: 50
+validation:
+  n_thresholds: 20
+  threshold_max: 0.95
+  threshold_min: 0.0

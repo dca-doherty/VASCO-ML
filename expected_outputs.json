@@ -1,0 +1,206 @@
+{
+  "_comment": "Numeric tolerances for reproduce.py verification. All targets match the published Bruehl et al. 2026 Scientific Reports paper (decile-based analyses, N=99,933 after POSS-I date filter). Tolerances absorb platform-specific float drift while catching real regressions.",
+
+  "paper_figures": {
+    "target_auc_mean": 0.809,
+    "target_auc_std_upper_bound": 0.05,
+    "source": "Bruehl et al. 2026, Scientific Reports (in press)"
+  },
+
+  "checks": [
+
+    {
+      "name": "N candidates in scored catalog",
+      "file": "results/ml_pipeline_red_allcandidates/scored_catalog_summary.json",
+      "key": "n_candidates",
+      "value": 107875,
+      "tolerance": 0
+    },
+
+    {
+      "name": "Cross-validation mean AUC",
+      "file": "results/ml_pipeline_red_allcandidates/training_report.json",
+      "key": "mean_auc",
+      "value": 0.809,
+      "tolerance": 0.03
+    },
+
+    {
+      "name": "Cross-validation mean sensitivity",
+      "file": "results/ml_pipeline_red_allcandidates/training_report.json",
+      "key": "mean_sensitivity",
+      "value": 0.709,
+      "tolerance": 0.08
+    },
+
+    {
+      "name": "Cross-validation mean specificity",
+      "file": "results/ml_pipeline_red_allcandidates/training_report.json",
+      "key": "mean_specificity",
+      "value": 0.714,
+      "tolerance": 0.08
+    },
+
+    {
+      "name": "Number of training labels",
+      "file": "results/ml_pipeline_red_allcandidates/training_report.json",
+      "key": "n_samples",
+      "value": 250,
+      "tolerance": 0
+    },
+
+    {
+      "name": "D9 shadow fraction",
+      "file": "results/shadow_deficit_deciles/shadow_deficit_deciles.csv",
+      "row": {"decile": 9},
+      "col": "shadow_pct",
+      "value": 0.31,
+      "tolerance": 0.05
+    },
+
+    {
+      "name": "D9 shadow deficit percent",
+      "file": "results/shadow_deficit_deciles/shadow_deficit_deciles.csv",
+      "row": {"decile": 9},
+      "col": "deficit_pct",
+      "value": -55.2,
+      "tolerance": 2.0
+    },
+
+    {
+      "name": "D9 shadow binomial p-value",
+      "file": "results/shadow_deficit_deciles/shadow_deficit_deciles.csv",
+      "row": {"decile": 9},
+      "col": "p_binomial_one_sided",
+      "value": 2.0e-07,
+      "tolerance": 5.0e-07
+    },
+
+    {
+      "name": "D0 shadow deficit percent",
+      "file": "results/shadow_deficit_deciles/shadow_deficit_deciles.csv",
+      "row": {"decile": 0},
+      "col": "deficit_pct",
+      "value": -36.3,
+      "tolerance": 2.5
+    },
+
+    {
+      "name": "D9 vs pooled D0-D8 shadow z-stat",
+      "file": "results/shadow_deficit_deciles/shadow_summary_tests.csv",
+      "row": {"test": "D9_vs_D0-D8_pooled"},
+      "col": "z",
+      "value": -2.78,
+      "tolerance": 0.3
+    },
+
+    {
+      "name": "D9 vs pooled D0-D8 shadow p-value",
+      "file": "results/shadow_deficit_deciles/shadow_summary_tests.csv",
+      "row": {"test": "D9_vs_D0-D8_pooled"},
+      "col": "p_value",
+      "value": 0.003,
+      "tolerance": 0.005
+    },
+
+    {
+      "name": "Nuclear permutation test p-value (+/- 1 day)",
+      "file": "results/nuclear_permutation_deciles/primary_tests_summary.csv",
+      "row": {"analysis": "primary_permutation"},
+      "col": "p_value",
+      "value": 0.024,
+      "tolerance": 0.010
+    },
+
+    {
+      "name": "Nuclear permutation ratio",
+      "file": "results/nuclear_permutation_deciles/primary_tests_summary.csv",
+      "row": {"analysis": "primary_permutation"},
+      "col": "ratio",
+      "value": 1.84,
+      "tolerance": 0.15
+    },
+
+    {
+      "name": "Nuclear Mann-Whitney U p-value",
+      "file": "results/nuclear_permutation_deciles/primary_tests_summary.csv",
+      "row": {"analysis": "mann_whitney_u"},
+      "col": "p_value",
+      "value": 0.002,
+      "tolerance": 0.003
+    },
+
+    {
+      "name": "D9 vs pooled D0-D8 nuclear z-stat",
+      "file": "results/nuclear_permutation_deciles/primary_tests_summary.csv",
+      "row": {"analysis": "d9_vs_d0-d8_zprop"},
+      "col": "z_stat",
+      "value": 7.40,
+      "tolerance": 1.5
+    },
+
+    {
+      "name": "D9 nuclear percent",
+      "file": "results/nuclear_permutation_deciles/decile_nuclear_pct.csv",
+      "row": {"decile": 9},
+      "col": "pct_in_nuclear_window",
+      "value": 13.55,
+      "tolerance": 0.5
+    },
+
+    {
+      "name": "D0 nuclear percent",
+      "file": "results/nuclear_permutation_deciles/decile_nuclear_pct.csv",
+      "row": {"decile": 0},
+      "col": "pct_in_nuclear_window",
+      "value": 8.30,
+      "tolerance": 0.5
+    },
+
+    {
+      "name": "Lag -1 permutation ratio",
+      "file": "results/nuclear_permutation_deciles/lag_sensitivity.csv",
+      "row": {"lag": -1},
+      "col": "ratio",
+      "value": 2.57,
+      "tolerance": 0.3
+    },
+
+    {
+      "name": "Lag 0 permutation ratio",
+      "file": "results/nuclear_permutation_deciles/lag_sensitivity.csv",
+      "row": {"lag": 0},
+      "col": "ratio",
+      "value": 2.36,
+      "tolerance": 0.3
+    },
+
+    {
+      "name": "Compact substructures: doublets in D9",
+      "file": "results/compact_substructures_summary.csv",
+      "row": {"structure_type": "doublets"},
+      "col": "count",
+      "value": 549,
+      "tolerance": 30
+    },
+
+    {
+      "name": "Compact substructures: triplets in D9",
+      "file": "results/compact_substructures_summary.csv",
+      "row": {"structure_type": "triplets"},
+      "col": "count",
+      "value": 143,
+      "tolerance": 20
+    },
+
+    {
+      "name": "Compact substructures: larger groupings in D9",
+      "file": "results/compact_substructures_summary.csv",
+      "row": {"structure_type": "larger_grouping"},
+      "col": "count",
+      "value": 190,
+      "tolerance": 20
+    }
+
+  ]
+}
